@@ -127,8 +127,8 @@
         }
 
         .carousel {
-            width: 300px;
-            height: 300px;
+            width: 600px;
+            height: 400px;
             position: relative;
             transform-style: preserve-3d;
             transform: rotateY(0deg);
@@ -143,7 +143,7 @@
             left: 0;
             top: 0;
             opacity: 0.6;
-            transition: opacity 0.5s;
+            transition: opacity 0.5s, transform 1s;
         }
 
         .carousel-item img {
@@ -189,7 +189,7 @@
 <body>
     <div class="background-image">
         <div class="overlay">
-            <img src="https://Veritho2609.github.io/Boda2/no.jpg" alt="Foto de los Novios">
+            <img src="https://veritho2609.github.io/BodaJacqueline-David/no.jpg" alt="Foto de los Novios">
             <h1>David <span class="heart">♥</span> Jacqueline </h1>
             <p>Te invitamos a celebrar nuestra boda</p>
         </div>
@@ -220,10 +220,10 @@
         <h2>Nuestras Fotos</h2>
         <div class="carousel-container">
             <div class="carousel">
-                <div class="carousel-item"><img src="https://Veritho2609.github.io/BodaJacqueline-David/no.jpg" alt="Image 1"></div>
-                <div class="carousel-item"><img src="https://Veritho2609.github.io/BodaJacqueline-David/no.jpg" alt="Image 2"></div>
-                <div class="carousel-item"><img src="https://Veritho2609.github.io/BodaJacqueline-David/no.jpg" alt="Image 3"></div>
-                <div class="carousel-item"><img src="https://Veritho2609.github.io/BodaJacqueline-David/no.jpg" alt="Image 4"></div>
+                <div class="carousel-item"><img src="https://veritho2609.github.io/BodaJacqueline-David/no.jpg" alt="Image 1"></div>
+                <div class="carousel-item"><img src="https://veritho2609.github.io/BodaJacqueline-David/no1.jpg" alt="Image 2"></div>
+                <div class="carousel-item"><img src="https://veritho2609.github.io/BodaJacqueline-David/no2.jpg" alt="Image 3"></div>
+                <div class="carousel-item"><img src="https://veritho2609.github.io/BodaJacqueline-David/no3.jpg" alt="Image 4"></div>
             </div>
         </div>
         <div class="social-links">
@@ -242,20 +242,20 @@
     <script>
         const carousel = document.querySelector('.carousel');
         const items = document.querySelectorAll('.carousel-item');
-        const radius = carousel.offsetWidth / 2 / Math.tan(Math.PI / items.length);
-        let angle = 0;
+        const itemCount = items.length;
+        const itemAngle = 360 / itemCount;
+        const radius = Math.round((carousel.offsetWidth / 2) / Math.tan(Math.PI / itemCount));
 
-        gsap.set(items, {
-            rotateY: (i) => i * (360 / items.length),
-            transformOrigin: `50% 50% ${-radius}px`
+        gsap.set(carousel, {
+            transformOrigin: `50% 50% ${-radius}px`,
+            rotationY: 0
         });
 
-        Draggable.create(carousel, {
-            type: "rotation",
-            onDrag: function () {
-                angle = this.rotation;
-                gsap.set(carousel, { rotationY: angle });
-            }
+        gsap.set(items, {
+            transformOrigin: `50% 50% ${-radius}px`,
+            rotateY: (i) => i * itemAngle,
+            z: -radius,
+            opacity: 0.6
         });
 
         items.forEach(item => {
@@ -265,6 +265,19 @@
             item.addEventListener('mouseout', () => {
                 gsap.to(item, { opacity: 0.6, duration: 0.5 });
             });
+        });
+
+        let currentRotation = 0;
+        Draggable.create(carousel, {
+            type: "rotation",
+            onDrag: function() {
+                currentRotation = this.rotation / itemAngle;
+                gsap.set(carousel, { rotationY: this.rotation });
+            },
+            onThrowUpdate: function() {
+                currentRotation = this.rotation / itemAngle;
+                gsap.set(carousel, { rotationY: this.rotation });
+            }
         });
     </script>
 </body>

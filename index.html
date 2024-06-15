@@ -122,40 +122,52 @@
         }
 
         .carousel-container {
-            perspective: 1000px;
-            margin-top: 20px;
+            overflow: hidden;
+            width: 100%;
+            max-width: 600px;
+            margin: 20px auto;
+            position: relative;
         }
 
         .carousel {
-            width: 600px;
-            height: 400px;
-            position: relative;
-            transform-style: preserve-3d;
-            transform: rotateY(0deg);
-            transition: transform 1s;
-            margin: 0 auto;
+            display: flex;
+            transition: transform 0.5s ease-in-out;
         }
 
         .carousel-item {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            left: 0;
-            top: 0;
-            opacity: 0.6;
-            transition: opacity 0.5s, transform 1s;
+            min-width: 100%;
+            box-sizing: border-box;
         }
 
         .carousel-item img {
             width: 100%;
-            height: 100%;
+            height: 400px;
             object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
-        .carousel-item:hover {
-            opacity: 1;
+        .carousel-buttons {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            font-size: 2em;
+            padding: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         .social-links {
@@ -190,7 +202,7 @@
     <div class="background-image">
         <div class="overlay">
             <img src="https://veritho2609.github.io/BodaJacqueline-David/no.jpg" alt="Foto de los Novios">
-            <h1>David <span class="heart">♥</span> Jacqueline </h1>
+            <h1>David <span class="heart">♥</span> Jacqueline</h1>
             <p>Te invitamos a celebrar nuestra boda</p>
         </div>
     </div>
@@ -225,6 +237,10 @@
                 <div class="carousel-item"><img src="https://veritho2609.github.io/BodaJacqueline-David/no2.jpg" alt="Image 3"></div>
                 <div class="carousel-item"><img src="https://veritho2609.github.io/BodaJacqueline-David/no3.jpg" alt="Image 4"></div>
             </div>
+            <div class="carousel-buttons">
+                <button class="carousel-button" id="prevBtn">&#10094;</button>
+                <button class="carousel-button" id="nextBtn">&#10095;</button>
+            </div>
         </div>
         <div class="social-links">
             <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
@@ -237,47 +253,25 @@
         <p>¡Gracias por compartir este día especial con nosotros!</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.9.1/Draggable.min.js"></script>
     <script>
         const carousel = document.querySelector('.carousel');
         const items = document.querySelectorAll('.carousel-item');
-        const itemCount = items.length;
-        const itemAngle = 360 / itemCount;
-        const radius = Math.round((carousel.offsetWidth / 2) / Math.tan(Math.PI / itemCount));
+        const totalItems = items.length;
+        let currentIndex = 0;
 
-        gsap.set(carousel, {
-            transformOrigin: `50% 50% ${-radius}px`,
-            rotationY: 0
+        function updateCarousel() {
+            const translateX = -currentIndex * 100;
+            carousel.style.transform = `translateX(${translateX}%)`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
         });
 
-        gsap.set(items, {
-            transformOrigin: `50% 50% ${-radius}px`,
-            rotateY: (i) => i * itemAngle,
-            z: -radius,
-            opacity: 0.6
-        });
-
-        items.forEach(item => {
-            item.addEventListener('mouseover', () => {
-                gsap.to(item, { opacity: 1, duration: 0.5 });
-            });
-            item.addEventListener('mouseout', () => {
-                gsap.to(item, { opacity: 0.6, duration: 0.5 });
-            });
-        });
-
-        let currentRotation = 0;
-        Draggable.create(carousel, {
-            type: "rotation",
-            onDrag: function() {
-                currentRotation = this.rotation / itemAngle;
-                gsap.set(carousel, { rotationY: this.rotation });
-            },
-            onThrowUpdate: function() {
-                currentRotation = this.rotation / itemAngle;
-                gsap.set(carousel, { rotationY: this.rotation });
-            }
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateCarousel();
         });
     </script>
 </body>

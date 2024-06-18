@@ -3,9 +3,9 @@
 <head>
     <meta property="og:image" content="https://veritho2609.github.io/BodaJacqueline-David/no6.jpg">
     <meta property="og:image:secure_url" content="https://veritho2609.github.io/BodaJacqueline-David/no6.jpg">
-    <meta property="og:image:type" content="image/jpeg"> <!-- Tipo de imagen (JPEG, PNG, etc.) -->
-    <meta property="og:image:width" content="800"> <!-- Ancho de la imagen en píxeles -->
-    <meta property="og:image:height" content="600"> <!-- Alto de la imagen en píxeles -->
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:width" content="800">
+    <meta property="og:image:height" content="600">
     <title>Nuestra Boda Jacqueline&David</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
@@ -67,13 +67,13 @@
         }
 
         .section-container {
-            background-color: rgba(210, 180, 140, 0.5); /* Color arena semi-transparente */
+            background-color: rgba(210, 180, 140, 0.5);
             padding: 20px;
             margin: 20px auto;
             border-radius: 10px;
             max-width: 800px;
             text-align: left;
-            background-image: url('https://veritho2609.github.io/BodaJacqueline-David/f1.jpeg'); /* Imagen de fondo */
+            background-image: url('https://veritho2609.github.io/BodaJacqueline-David/f1.jpeg');
             background-size: cover;
             background-position: center;
         }
@@ -82,9 +82,8 @@
             font-family: 'Dancing Script', cursive;
             font-size: 2em;
             margin-bottom: 10px;
-            color: black; /* Añadido para color negro */
+            color: black;
         }
-
 
         .section-container p {
             font-size: 1.2em;
@@ -129,7 +128,7 @@
             text-decoration: underline;
         }
 
-        /* Estilos para la galería de fotos */
+        /* Estilos para el carrusel 3D */
         .photo-gallery-container {
             background-color: #f9f9f9;
             padding: 20px;
@@ -143,27 +142,49 @@
             color: black;
         }
 
-        .photo-gallery {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
+        .carousel {
+            perspective: 1000px;
+            margin: 0 auto;
+            width: 80%;
+            height: 500px;
+            position: relative;
         }
 
-        .photo-gallery img {
+        .carousel-container {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;
+            animation: rotate 30s infinite linear;
+        }
+
+        .carousel-item {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            transform-style: preserve-3d;
+        }
+
+        .carousel-item img {
             width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
         }
 
-        .photo-gallery img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        @keyframes rotate {
+            from {
+                transform: rotateY(0deg);
+            }
+            to {
+                transform: rotateY(360deg);
+            }
         }
 
         footer {
-            background-color: #000; 
+            background-color: #000;
             padding: 20px;
             margin-top: 20px;
         }
@@ -199,23 +220,40 @@
         <ul class="gift-list">
             <li><a href="https://www.liverpool.com.mx/tienda/pdp/dildo-petukita-box/99965960210?skuid=1146313783" target="_blank">Liverpool- Lista de Bodas</a></li>
             <li><a href="https://articulo.mercadolibre.com.mx/MLM-2956115000-tanga-de-cuero-sexy-hombre-cinturon-de-castidad-pantalones-b-_JM#position=5&search_layout=stack&type=item&tracking_id=bab2edfb-12d5-4352-b5e0-6207a456803a="_blank">Mercado libre - Lista de Bodas</a></li>
-            <li><a href="https://www.amazon.com.mx/Piezas-Artificial-Parejas-Nalgadas-Cosquilleadores/dp/B0BYHRVG8R/ref=sr_1_6?dib=eyJ2IjoiMSJ9.QeC9P6nj5SjX3l7HvJT2-9sbqvvt2dZJPWTGZbTYzz_IF3ak2Ii5xXE_dQkQ7hVXSw8AYhPO41eA3KxRBH6XSl4b3SDHUmtG8bl1kryHgu_lX7BLItGhI6GsAueDu6txyK4eXgnAcLwkviurgcvKUlllj07LYWR7Pd5tzOxearhQWsL9wM0v8pfV2Fg1PUQZSvYJ3ETxnbIUxQmjDpsFzQ2cpQbrSFnyFGWoS867X2lWXNTGuISq0Sb7nI2bRAQzcZdzRvrAnC7bnOe-duN-TrJbZgruGHh3AnUSyCxb5EQ.uAu5qjbeVdrGnxuAX4meDV77aBCZwsX3xHxGdLXIVjs&target="_blank"> Amazon- Lista de Bodas</a></li>
+            <li><a href="https://www.amazon.com.mx/Piezas-Artificial-Parejas-Nalgadas-Cosquilleadores/dp/B0BYHRVG8R/ref=sr_1_6?dib=eyJ2IjoiMSJ9.QeC9P6nj5SjX3l7HvJT2-9sbqvvt2dZJPWTGZbTYzz_IF3ak2Ii5xXE_dQkQ7hVXSw8AYhPO41eA3KxRBH6XSl4bA6oT_cNU3_4vFoVmFgUJHMb2GepN2Y1Buw5LG1FhZJW_GnXerPt20_rVOBZV3FvR_sazXtEBRSyFN9x4jl8PVOSKHMT2e65nb5IfVoD7MDlaNxrXwDhzEMuDdB9tIJVt_fgnHcFauTGtT_8d2hB5FjU1Z2v-KYzo_ouqqDsZNs_yw7id1GAEx-jQ-LwkviurgcvKUlllj07LYWR7Pd5tzOxearhQWsL9wM0v8pfV2Fg1PUQZSvYJ3ETxnbIUxQmjDpsFzQ2cpQbrSFnyFGWoS867X2lWXNTGuISq0Sb7nI2bRAQzcZdzRvrAnC7bnOe-duN-TrJbZgruGHh3AnUSyCxb5EQ.uAu5qjbeVdrGnxuAX4meDV77aBCZwsX3xHxGdLXIVjs&target="_blank"> Amazon- Lista de Bodas</a></li>
         </ul>
     </div>
 
     <!-- Sección de galería de fotos -->
     <div class="photo-gallery-container">
         <h2>Nuestras Fotos</h2>
-        <div class="photo-gallery">
-            <img src="https://veritho2609.github.io/BodaJacqueline-David/no9.jpg" alt="Image 1">
-            <img src="https://veritho2609.github.io/BodaJacqueline-David/no11.jpg" alt="Image 2">
-            <img src="https://veritho2609.github.io/BodaJacqueline-David/no12.jpg" alt="Image 3">
-            <img src="https://veritho2609.github.io/BodaJacqueline-David/no13.jpg" alt="Image 4">
-            <img src="https://veritho2609.github.io/BodaJacqueline-David/no14.jpg" alt="Image 5">
-            <img src="https://veritho2609.github.io/BodaJacqueline-David/no15.jpg" alt="Image 6">
-            <img src="https://veritho2609.github.io/BodaJacqueline-David/no16.jpg" alt="Image 7">
-            <img src="https://veritho2609.github.io/BodaJacqueline-David/no17.jpg" alt="Image 8">
-            <img src="https://veritho2609.github.io/BodaJacqueline-David/no18.jpg" alt="Image 9">
+        <div class="carousel">
+            <div class="carousel-container">
+                <div class="carousel-item" style="transform: rotateY(0deg) translateZ(500px);">
+                    <img src="https://veritho2609.github.io/BodaJacqueline-David/no9.jpg" alt="Foto 1">
+                </div>
+                <div class="carousel-item" style="transform: rotateY(45deg) translateZ(500px);">
+                    <img src="https://veritho2609.github.io/BodaJacqueline-David/no11.jpg" alt="Foto 2">
+                </div>
+                <div class="carousel-item" style="transform: rotateY(90deg) translateZ(500px);">
+                    <img src="https://veritho2609.github.io/BodaJacqueline-David/no12.jpg" alt="Foto 3">
+                </div>
+                <div class="carousel-item" style="transform: rotateY(135deg) translateZ(500px);">
+                    <img src="https://veritho2609.github.io/BodaJacqueline-David/no13.jpg" alt="Foto 4">
+                </div>
+                <div class="carousel-item" style="transform: rotateY(180deg) translateZ(500px);">
+                    <img src="https://veritho2609.github.io/BodaJacqueline-David/no14.jpg" alt="Foto 5">
+                </div>
+                <div class="carousel-item" style="transform: rotateY(225deg) translateZ(500px);">
+                    <img src="https://veritho2609.github.io/BodaJacqueline-David/no15.jpg" alt="Foto 6">
+                </div>
+                <div class="carousel-item" style="transform: rotateY(270deg) translateZ(500px);">
+                    <img src="https://veritho2609.github.io/BodaJacqueline-David/no16.jpg" alt="Foto 7">
+                </div>
+                <div class="carousel-item" style="transform: rotateY(315deg) translateZ(500px);">
+                    <img src="https://veritho2609.github.io/BodaJacqueline-David/no17.jpg" alt="Foto 8">
+                </div>
+            </div>
         </div>
     </div>
 
@@ -224,7 +262,24 @@
     </footer>
 
     <script>
-       
+        // Script para el carrusel 3D
+        document.addEventListener('DOMContentLoaded', function() {
+            const carouselContainer = document.querySelector('.carousel-container');
+            const items = document.querySelectorAll('.carousel-item');
+            const itemCount = items.length;
+            const theta = 360 / itemCount;
+            let currentIndex = 0;
+
+            function rotateCarousel() {
+                const angle = theta * currentIndex * -1;
+                carouselContainer.style.transform = `rotateY(${angle}deg)`;
+            }
+
+            setInterval(() => {
+                currentIndex = (currentIndex + 1) % itemCount;
+                rotateCarousel();
+            }, 3000);
+        });
     </script>
 </body>
 </html>

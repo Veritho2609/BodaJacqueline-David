@@ -6,7 +6,7 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="600">
-    <title>Nuestra Boda Jacqueline&David</title>
+    <title>Nuestra Boda Jacqueline&amp;David</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -103,11 +103,6 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
             margin-bottom: 20px;
-        }
-
-        .bold-italic {
-            font-family: 'Great Vibes', cursive;
-            font-style: italic;
         }
 
         .carousel-container {
@@ -237,15 +232,17 @@
             </div>
             <div class="carousel-buttons">
                 <button class="carousel-button" id="prevBtn">&#10094;</button>
-                <button class="carousel-button" id="nextBtn">&#10095;</button>
-            </div>
+                           <button class="carousel-button" id="nextBtn">&#10095;</button>
             </div>
         </div>
-
-        <footer id="footer">
-            <p style="font-family: 'Great Vibes', cursive; font-size: 1.5em; color: #fff; text-align: center; padding: 20px;"><span class="heart">♥</span>¡Gracias por compartir este día especial con nosotros!<span class="heart">♥</span></p>
-        </footer>
+        <div class="navigation-buttons">
+            <button class="navigation-button" id="prevSectionBtn2">Anterior</button>
+        </div>
     </div>
+
+    <footer id="footer">
+        <p style="font-family: 'Great Vibes', cursive; font-size: 1.5em; color: #fff; text-align: center; padding: 20px;"><span class="heart">♥</span>¡Gracias por compartir este día especial con nosotros!<span class="heart">♥</span></p>
+    </footer>
 
     <script>
         const section1 = document.getElementById('section1');
@@ -254,6 +251,7 @@
         const nextSectionBtn = document.getElementById('nextSectionBtn');
         const prevSectionBtn1 = document.getElementById('prevSectionBtn1');
         const nextSectionBtn1 = document.getElementById('nextSectionBtn1');
+        const prevSectionBtn2 = document.getElementById('prevSectionBtn2');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
 
@@ -276,6 +274,13 @@
 
         // Botón para avanzar a la siguiente sección desde la primera sección
         nextSectionBtn1.addEventListener('click', () => {
+            section1.style.display = 'none';
+            section2.style.display = 'block';
+            footer.style.display = 'block';
+        });
+
+        // Botón para retroceder a la segunda sección desde la tercera sección
+        prevSectionBtn2.addEventListener('click', () => {
             section1.style.display = 'none';
             section2.style.display = 'block';
             footer.style.display = 'block';

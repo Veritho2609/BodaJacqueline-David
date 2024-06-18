@@ -6,7 +6,7 @@
     <meta property="og:image:type" content="image/jpeg">
     <meta property="og:image:width" content="800">
     <meta property="og:image:height" content="600">
-    <title>Nuestra Boda Jacqueline&amp;David</title>
+    <title>Nuestra Boda Jacqueline&David</title>
     <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
@@ -98,11 +98,9 @@
             color: black;
         }
 
-        .section-container img {
-            width: 100%;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin-bottom: 20px;
+        .bold-italic {
+            font-family: 'Great Vibes', cursive;
+            font-style: italic;
         }
 
         .carousel-container {
@@ -176,10 +174,9 @@
         }
 
         footer {
-            background-color: #000;
+            background-color: #000; 
             padding: 20px;
             margin-top: 20px;
-            display: none; /* Oculto por defecto */
         }
 
         .heart {
@@ -198,7 +195,7 @@
     <div class="background-image">
         <div class="overlay">
             <img src="https://veritho2609.github.io/BodaJacqueline-David/no8.jpg" alt="Foto de los Novios">
-            <h1>David <span class="heart">♥</span> Jacqueline</h1>
+            <h1>David  <span class="heart">♥</span> Jacqueline</h1>
             <div class="countdown" id="countdown"></div>
             <p>Tu presencia es muy especial para nosotros, y nos encantaría que nos acompañaras en la celebración de nuestro matrimonio</p>
             <div class="navigation-buttons">
@@ -209,7 +206,10 @@
 
     <div class="section-container" id="section1">
         <h2>Detalles de la Ceremonia Civil</h2>
-        <img src="https://veritho2609.github.io/BodaJacqueline-David/detalles.jpg" alt="Imagen de la Ceremonia Civil">
+        <p><span class="bold-italic">Fecha:</span> 7 de septiembre de 2024</p>
+        <p><span class="bold-italic">Hora:</span> 6:00 pm</p>
+        <p><span class="bold-italic">Lugar:</span> Quinta El Toro, Allende N.L.</p>
+        <p><span class="bold-italic">Dirección:</span> Calle Durazno, Allende, Mexico</p>
         <div class="navigation-buttons">
             <button class="navigation-button" id="prevSectionBtn1">Anterior</button>
             <button class="navigation-button" id="nextSectionBtn1">Siguiente</button>
@@ -232,83 +232,62 @@
             </div>
             <div class="carousel-buttons">
                 <button class="carousel-button" id="prevBtn">&#10094;</button>
-                           <button class="carousel-button" id="nextBtn">&#10095;</button>
+                <button class="carousel-button" id="nextBtn">&#10095;</button>
             </div>
         </div>
         <div class="navigation-buttons">
             <button class="navigation-button" id="prevSectionBtn2">Anterior</button>
+            <button class="navigation-button" id="nextSectionBtn2">Siguiente</button>
         </div>
     </div>
 
-    <footer id="footer">
+    <footer>
         <p style="font-family: 'Great Vibes', cursive; font-size: 1.5em; color: #fff; text-align: center; padding: 20px;"><span class="heart">♥</span>¡Gracias por compartir este día especial con nosotros!<span class="heart">♥</span></p>
     </footer>
 
     <script>
-        const section1 = document.getElementById('section1');
-        const section2 = document.getElementById('section2');
-        const footer = document.getElementById('footer');
-        const nextSectionBtn = document.getElementById('nextSectionBtn');
-        const prevSectionBtn1 = document.getElementById('prevSectionBtn1');
-        const nextSectionBtn1 = document.getElementById('nextSectionBtn1');
-        const prevSectionBtn2 = document.getElementById('prevSectionBtn2');
-        const prevBtn = document.getElementById('prevBtn');
-        const nextBtn = document.getElementById('nextBtn');
-
-        // Mostrar la primera sección al cargar la página
-        section1.style.display = 'block';
-
-        // Botón para avanzar a la segunda sección desde la portada
-        nextSectionBtn.addEventListener('click', () => {
-            section1.style.display = 'none';
-            section2.style.display = 'block';
-            footer.style.display = 'block';
+        document.getElementById('nextSectionBtn').addEventListener('click', () => {
+            document.querySelector('.background-image').style.display = 'none';
+            document.getElementById('section1').style.display = 'block';
         });
 
-        // Botón para retroceder a la primera sección desde la segunda sección
-        prevSectionBtn1.addEventListener('click', () => {
-            section1.style.display = 'block';
-            section2.style.display = 'none';
-            footer.style.display = 'none';
+        document.getElementById('prevSectionBtn1').addEventListener('click', () => {
+            document.getElementById('section1').style.display = 'none';
+            document.querySelector('.background-image').style.display = 'block';
         });
 
-        // Botón para avanzar a la siguiente sección desde la primera sección
-        nextSectionBtn1.addEventListener('click', () => {
-            section1.style.display = 'none';
-            section2.style.display = 'block';
-            footer.style.display = 'block';
+        document.getElementById('nextSectionBtn1').addEventListener('click', () => {
+            document.getElementById('section1').style.display = 'none';
+            document.getElementById('section2').style.display = 'block';
         });
 
-        // Botón para retroceder a la segunda sección desde la tercera sección
-        prevSectionBtn2.addEventListener('click', () => {
-            section1.style.display = 'none';
-            section2.style.display = 'block';
-            footer.style.display = 'block';
+        document.getElementById('prevSectionBtn2').addEventListener('click', () => {
+            document.getElementById('section2').style.display = 'none';
+            document.getElementById('section1').style.display = 'block';
         });
 
-        // Botón para navegar hacia atrás en el carrusel de fotos
-        prevBtn.addEventListener('click', () => {
-            const carousel = document.querySelector('.carousel');
-            const items = document.querySelectorAll('.carousel-item');
-            const totalItems = items.length;
-            let currentIndex = parseInt(carousel.style.transform.split('(')[1]) / 100 * -1;
-            let nextIndex = (currentIndex - 1 + totalItems) % totalItems;
-            let translateX = nextIndex * -100;
+        // Carousel functionality
+        const carousel = document.querySelector('.carousel');
+        const items = document.querySelectorAll('.carousel-item');
+        const totalItems = items.length;
+        let currentIndex = 0;
+
+        function updateCarousel() {
+            const translateX = -currentIndex * 100;
             carousel.style.transform = `translateX(${translateX}%)`;
+        }
+
+        document.getElementById('nextBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalItems;
+            updateCarousel();
         });
 
-        // Botón para navegar hacia adelante en el carrusel de fotos
-        nextBtn.addEventListener('click', () => {
-            const carousel = document.querySelector('.carousel');
-            const items = document.querySelectorAll('.carousel-item');
-            const totalItems = items.length;
-            let currentIndex = parseInt(carousel.style.transform.split('(')[1]) / 100 * -1;
-            let nextIndex = (currentIndex + 1) % totalItems;
-            let translateX = nextIndex * -100;
-            carousel.style.transform = `translateX(${translateX}%)`;
+        document.getElementById('prevBtn').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+            updateCarousel();
         });
 
-        // Función para actualizar el contador de días restantes
+        // Countdown functionality
         function updateCountdown() {
             const countdownElement = document.getElementById('countdown');
             const weddingDate = new Date('2024-09-07T00:00:00');
@@ -319,10 +298,8 @@
             countdownElement.textContent = `Faltan ${daysDiff} días para nuestra boda.`;
         }
 
-        // Actualizar el contador de días restantes cada día
         updateCountdown();
-        setInterval(updateCountdown, 86400000);
+        setInterval(updateCountdown, 86400000); // Actualiza cada día
     </script>
 </body>
 </html>
-

@@ -186,6 +186,17 @@
     .heart {
         color: red;
     }
+
+    .play-button {
+        font-size: 1.5em;
+        background-color: rgba(0, 0, 0, 0.7);
+        border: none;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+    }
 </style>
 </head>
 <body>
@@ -194,6 +205,7 @@
             <img src="https://veritho2609.github.io/BodaJacqueline-David/no8.jpg" alt="Foto de los Novios">
             <h1>David <span class="heart">♥</span> Jacqueline</h1>
             <p>Te invitamos a celebrar nuestra boda</p>
+            <button class="play-button" onclick="playAudio()">Reproducir Música</button>
         </div>
     </div>
     <div class="section-container">
@@ -232,7 +244,7 @@
         <p style="font-family: 'Dancing Script', cursive; font-size: 1.5em; color: #fff; text-align: center; padding: 20px;"><span class="heart">♥</span>¡Gracias por compartir este día especial con nosotros!<span class="heart">♥</span></p>
     </footer>
 
-    <audio autoplay loop>
+    <audio id="bgAudio" loop>
         <source src="https://veritho2609.github.io/BodaJacqueline-David/musica.mp3" type="audio/mpeg">
     </audio>
 
@@ -256,7 +268,11 @@
             currentIndex = (currentIndex - 1 + totalItems) % totalItems;
             updateCarousel();
         });
+
+        function playAudio() {
+            const audio = document.getElementById('bgAudio');
+            audio.play();
+        }
     </script>
 </body>
 </html>
-
